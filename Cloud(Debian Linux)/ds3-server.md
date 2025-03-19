@@ -43,7 +43,7 @@ sudo ufw status
 
 echo "防火墙端口配置完成。"
 ```
-安装steamcmd
+安装steamcmd, 参考value官方[wiki](https://developer.valvesoftware.com/wiki/SteamCMD#Debian)
 ```shell
 sudo apt update; sudo apt install software-properties-common; sudo apt-add-repository non-free; sudo dpkg --add-architecture i386; sudo apt update
 sudo apt install steamcmd

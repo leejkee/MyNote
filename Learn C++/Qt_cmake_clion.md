@@ -124,6 +124,30 @@ target_link_libraries(tray_music_core PUBLIC
 - find_package写在根目录的CMakeLists中
 - 使用add_subdirectory导入子模块就可以了
 - qrc文件必须加入到最终的可执行文件，只要你执行了，不管是不是这个模块用了qrc，都必须加入，否则就会找不到
+关于qrc文件在模块中导入的方法，比如我要在一个静态库中导入一个qrc，还可以使用`Q_INIT_RESOURCE`，你不能在namespace中使用它，但是可以通过函数调用的方式
+
+```cpp
+inline void initMyQRC() {
+    Q_INIT_RESOURCE(svg);
+    Q_INIT_RESOURCE(qss);
+}
+
+namespace UserMainWindow {
+    MainWindow::MainWindow(QWidget *parent)
+        : QMainWindow(parent),
+          m_minimizeAction(nullptr),
+          m_maximizeAction(nullptr),
+          m_restoreAction(nullptr),
+          m_quitAction(nullptr),
+          m_systemTrayIcon(nullptr),
+          m_trayIconMenu(nullptr) {
+        initMyQRC();
+        initMainApplication();
+    }
+}
+```
+
+根目录的CMakeLists.txt如下：
 
 ```cmake
 cmake_minimum_required(VERSION 3.20)

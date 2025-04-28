@@ -1,0 +1,15 @@
+# Ignore xmake build output directory
+build/
+
+# Ignore xmake cache and configuration directory
+.xmake/
+
+# You might also want to ignore the executable file itself
+# if you don't want the 'build/' rule (or if you build elsewhere)
+# race_condition
+
+# If you were using Visual Studio specific files (not relevant here but common on Windows)
+.vscode/
+#*.suo
+#*.user
+#*.vcxproj.filters

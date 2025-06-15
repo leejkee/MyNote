@@ -1,6 +1,5 @@
 -- 设置项目名称
 set_project("race_condition_demo")
-
 -- >>>>> 修改这里，明确指定使用 gcc 工具链 <<<<<
 -- xmake 会尝试找到系统上安装的 MinGW-GCC
 set_toolchains("gcc")
